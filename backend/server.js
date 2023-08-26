@@ -1,11 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import workoutRoutes from "./routes/workouts.js";
 import userRoutes from "./routes/user.js";
 
 dotenv.config();
+app.use(cors());
+
 //express app
 const app = express();
 
