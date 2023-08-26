@@ -7,10 +7,10 @@ import workoutRoutes from "./routes/workouts.js";
 import userRoutes from "./routes/user.js";
 
 dotenv.config();
-app.use(cors());
 
 //express app
 const app = express();
+app.use(cors());
 
 // middleware
 app.use(express.json());
