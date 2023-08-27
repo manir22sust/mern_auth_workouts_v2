@@ -9,10 +9,10 @@ import { useAuthContext } from "../hooks/useAuthContext";
 export const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
   const { user } = useAuthContext();
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts", {
+      const response = await fetch(`${API_BASE_URL}/api/workouts`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
