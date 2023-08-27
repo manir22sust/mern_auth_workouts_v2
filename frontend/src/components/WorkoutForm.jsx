@@ -10,7 +10,7 @@ export const WorkoutForm = () => {
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,7 +21,7 @@ export const WorkoutForm = () => {
 
     const workout = { title, load, reps };
 
-    const response = await fetch("/api/workouts", {
+    const response = await fetch(`${API_BASE_URL}/api/workouts`, {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {

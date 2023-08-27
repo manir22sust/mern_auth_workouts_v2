@@ -5,7 +5,11 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "https://mern-auth-workouts-backend.onrender.com",
+      "/api": {
+        target: "https://mern-auth-workouts-backend.onrender.com",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
   plugins: [react()],

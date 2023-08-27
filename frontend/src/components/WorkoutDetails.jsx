@@ -7,17 +7,20 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 export const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
   const { user } = useAuthContext();
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const handleClick = async () => {
     if (!user) {
       return;
     }
-    const response = await fetch("/api/workouts/" + workout._id, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      `${API_BASE_URL}/api/workouts/` + workout._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (response.ok) {
       dispatch({ type: "DELETE_WORKOUT", payload: json });
